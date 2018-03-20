@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.input.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="%menu.File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#exitPressed" text="%menu.Exit">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Lanzar">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Amazon" />
+                  <MenuItem mnemonicParsing="false" text="Blogger" />
+                  <MenuItem mnemonicParsing="false" text="Ebay" />
+                  <MenuItem mnemonicParsing="false" text="Facebook" />
+                  <MenuItem mnemonicParsing="false" text="Google+" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Opciones">
+               <items>
+                  <Menu mnemonicParsing="false" text="Comprar en">
+                    <items>
+                        <RadioMenuItem fx:id="rbAmazon" mnemonicParsing="false" text="Amazon" />
+                        <RadioMenuItem fx:id="rbEbay" mnemonicParsing="false" text="Ebay" />
+                    </items>
+                  </Menu>
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <top>
+            <ToolBar maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" BorderPane.alignment="CENTER">
+              <items>
+                  <Button fx:id="btnAmazon" mnemonicParsing="false" onMouseClicked="#btnAmazonPressed">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/resources/amazon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnBing" mnemonicParsing="false" onMouseClicked="#btnBingPressed">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/resources/bing.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnEbay" mnemonicParsing="false" onMouseClicked="#btnEbayPressed">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/resources/ebay.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnFacebook" mnemonicParsing="false" onMouseClicked="#btnFacebookPressed">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/resources/facebook.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnGooglePlus" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/resources/googlePlus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+              </items>
+            </ToolBar>
+         </top>
+         <left>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <Label fx:id="labelBottom" text="Label" />
+   </children>
+</VBox>
