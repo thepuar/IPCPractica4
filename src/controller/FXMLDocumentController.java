@@ -131,5 +131,62 @@ public class FXMLDocumentController implements Initializable {
     private void exitPressed(ActionEvent event) {
         Platform.exit();
     }
-    
+
+    @FXML
+    private void btnBingPressed(ActionEvent event) {
+         List<String> choices = new ArrayList<>();
+        choices.add("El blog de Athos");
+        choices.add("El blog de Porthos");
+        choices.add("El blog de Aramis");
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("El blog de Athos", choices);
+        dialog.setTitle("Selecciona un blog");
+        dialog.setHeaderText("¿Que blog quieres visitar?");
+        dialog.setContentText("Elige: ");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(option -> this.labelBottom.setText("Visitando "+option));
+       
+    }
+
+    @FXML
+    private void btnEbayPressed(ActionEvent event) {
+         if(this.rbEbay.isSelected())showPurchaseRealized("Ebay");
+        else noPurchaseRealized("Ebay");
+    }
+
+    @FXML
+    private void btnFacebookPressed(ActionEvent event) {
+         TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Introduce un nombre");
+        dialog.setHeaderText("Con que usuario quieres escribir en Facebook");
+        dialog.setContentText("Introduce tu nombre:");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como "+name));
+    }
+
+    @FXML
+    private void btnGooglePressed(MouseEvent event) {
+         TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Introduce un nombre");
+        dialog.setHeaderText("Con que usuario quieres escribir en Google+");
+        dialog.setContentText("Introduce tu nombre:");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como "+name));
+    }
+
+    @FXML
+    private void btnAmazonPressed(ActionEvent event) {
+        if(this.rbAmazon.isSelected())showPurchaseRealized("Amazon");
+        else noPurchaseRealized("Amazon");
+    }
+
+    @FXML
+    private void btnGooglePressed(ActionEvent event) {
+         TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle("Introduce un nombre");
+        dialog.setHeaderText("Con que usuario quieres escribir en Google+");
+        dialog.setContentText("Introduce tu nombre:");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como "+name));
+    }
 }
+

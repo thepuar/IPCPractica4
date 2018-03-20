@@ -24,7 +24,7 @@ public class Practica4 extends Application {
         Locale locale = Locale.getDefault();
         ResourceBundle bundle = ResourceBundle.getBundle("idiomas.strings",locale);
         Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"),bundle);
-        
+
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
