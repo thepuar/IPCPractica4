@@ -131,5 +131,5 @@ public class FXMLDocumentController implements Initializable {
     private void exitPressed(ActionEvent event) {
         Platform.exit();
     }
-    
 }
+
