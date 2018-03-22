@@ -99,7 +99,6 @@ public class FXMLDocumentController implements Initializable {
                 this.rbAmazon.setSelected(false);
             }
         });
-        System.out.println("Idioma: " + rb.getLocale().getLanguage());
         switch (rb.getLocale().getLanguage()) {
             case "es":
                 this.rbSpa.setSelected(true);
@@ -125,21 +124,21 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void btnFacebookPressed(MouseEvent event) {
         TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Introduce un nombre");
-        dialog.setHeaderText("Con que usuario quieres escribir en Facebook");
-        dialog.setContentText("Introduce tu nombre:");
+        dialog.setTitle(this.bundle.getString("dialog.Social.tittle"));
+        dialog.setHeaderText(this.bundle.getString("dialog.Social.Fb.Header"));
+        dialog.setContentText(this.bundle.getString("dialog.Social.Context"));
         Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como " + name));
+        result.ifPresent(name -> this.labelBottom.setText(this.bundle.getString("label.sendMessage") + name));
 
     }
 
     @FXML
     private void btnBingPressed(MouseEvent event) {
         List<String> choices = new ArrayList<>();
-        choices.add("El blog de Athos");
-        choices.add("El blog de Porthos");
-        choices.add("El blog de Aramis");
-        ChoiceDialog<String> dialog = new ChoiceDialog<>("El blog de Athos", choices);
+        choices.add(this.bundle.getString("choice.Blog.Athos"));
+        choices.add(this.bundle.getString("choice.Blog.Porthos"));
+        choices.add(this.bundle.getString("choice.Blog.Aramis"));
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(this.bundle.getString("choice.Blog.Athos"), choices);
         dialog.setTitle("Selecciona un blog");
         dialog.setHeaderText("¿Que blog quieres visitar?");
         dialog.setContentText("Elige: ");
