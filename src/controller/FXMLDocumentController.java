@@ -14,11 +14,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -28,11 +24,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import practica4.Practica4;
 
 /**
@@ -112,85 +103,6 @@ public class FXMLDocumentController implements Initializable {
 
         }
 
-//        this.mIAmazon.setOnAction(this::btnAmazonPressed);
-//        this.mIBlogger.setOnAction(this::btnBingPressed);
-//        this.mIEbay.setOnAction(this::btnEbayPressed);
-//        this.mIFacebook.setOnAction(this::btnFacebookPressed);
-//        this.mIGoogle.setOnAction(this::btnGooglePressed);
-//        
-//        
-    }
-
-    @FXML
-    private void btnFacebookPressed(MouseEvent event) {
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle(this.bundle.getString("dialog.Social.tittle"));
-        dialog.setHeaderText(this.bundle.getString("dialog.Social.Fb.Header"));
-        dialog.setContentText(this.bundle.getString("dialog.Social.Context"));
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> this.labelBottom.setText(this.bundle.getString("label.sendMessage") + name));
-
-    }
-
-    @FXML
-    private void btnBingPressed(MouseEvent event) {
-        List<String> choices = new ArrayList<>();
-        choices.add(this.bundle.getString("choice.Blog.Athos"));
-        choices.add(this.bundle.getString("choice.Blog.Porthos"));
-        choices.add(this.bundle.getString("choice.Blog.Aramis"));
-        ChoiceDialog<String> dialog = new ChoiceDialog<>(this.bundle.getString("choice.Blog.Athos"), choices);
-        dialog.setTitle("Selecciona un blog");
-        dialog.setHeaderText("¿Que blog quieres visitar?");
-        dialog.setContentText("Elige: ");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(option -> this.labelBottom.setText("Visitando " + option));
-    }
-
-    @FXML
-    private void btnAmazonPressed(MouseEvent event) {
-        if (this.rbAmazon.isSelected()) {
-            showPurchaseRealized("Amazon");
-        } else {
-            noPurchaseRealized("Amazon");
-        }
-
-    }
-
-    @FXML
-    private void btnEbayPressed(MouseEvent event) {
-        if (this.rbEbay.isSelected()) {
-            showPurchaseRealized("Ebay");
-        } else {
-            noPurchaseRealized("Ebay");
-        }
-    }
-
-    @FXML
-    private void btnGooglePressed(MouseEvent event) {
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Introduce un nombre");
-        dialog.setHeaderText("Con que usuario quieres escribir en Google+");
-        dialog.setContentText("Introduce tu nombre:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como " + name));
-    }
-
-    public void showPurchaseRealized(String tienda) {
-        this.labelBottom.setText("Has comprado en " + tienda);
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Confirmación");
-        alert.setHeaderText("Compra realizada correctamente");
-        alert.setContentText("Has comprado en " + tienda);
-        alert.showAndWait();
-    }
-
-    public void noPurchaseRealized(String tienda) {
-        this.labelBottom.setText("No se ha podido realizar la compra en " + tienda);
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Negación");
-        alert.setHeaderText("La compra no se ha podido realizar");
-        alert.setContentText("Por favor, cambia la seleccion actual en el menú Opciones.");
-        alert.showAndWait();
     }
 
     @FXML
@@ -198,33 +110,63 @@ public class FXMLDocumentController implements Initializable {
         Platform.exit();
     }
 
+    //AMAZON
+    @FXML
+    private void btnAmazonPressed(MouseEvent event) {
+        amazonPressed();
+    }
+
     @FXML
     private void itemAmazonPressed(ActionEvent event) {
+        amazonPressed();
+
+    }
+
+    private void amazonPressed() {
         if (this.rbAmazon.isSelected()) {
             showPurchaseRealized("Amazon");
         } else {
             noPurchaseRealized("Amazon");
         }
+    }
 
+    //BING
+    @FXML
+    private void btnBingPressed(MouseEvent event) {
+        bingPressed();
     }
 
     @FXML
     private void itemBingPressed(ActionEvent event) {
-        List<String> choices = new ArrayList<>();
-        choices.add("El blog de Athos");
-        choices.add("El blog de Porthos");
-        choices.add("El blog de Aramis");
-        ChoiceDialog<String> dialog = new ChoiceDialog<>("El blog de Athos", choices);
-        dialog.setTitle("Selecciona un blog");
-        dialog.setHeaderText("¿Que blog quieres visitar?");
-        dialog.setContentText("Elige: ");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(option -> this.labelBottom.setText("Visitando " + option));
+        bingPressed();
+    }
 
+    private void bingPressed() {
+        List<String> choices = new ArrayList<>();
+        choices.add(this.bundle.getString("choice.Blog.Athos"));
+        choices.add(this.bundle.getString("choice.Blog.Porthos"));
+        choices.add(this.bundle.getString("choice.Blog.Aramis"));
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(this.bundle.getString("choice.Blog.Athos"), choices);
+        dialog.setTitle(this.bundle.getString("choice.Blog.Tittle"));
+        dialog.setHeaderText(this.bundle.getString("choice.Blog.Header"));
+        dialog.setContentText(this.bundle.getString("choice.Blog.Content"));
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(option -> this.labelBottom.setText(this.bundle.getString("label.Visit") + option));
+
+    }
+
+    //EBAY
+    @FXML
+    private void btnEbayPressed(MouseEvent event) {
+        ebayPressed();
     }
 
     @FXML
     private void itemEbayPressed(ActionEvent event) {
+        ebayPressed();
+    }
+
+    private void ebayPressed() {
         if (this.rbEbay.isSelected()) {
             showPurchaseRealized("Ebay");
         } else {
@@ -232,26 +174,67 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    //FACEBOOK
     @FXML
     private void itemFacebookPressed(ActionEvent event) {
+        facebookPressed();
+    }
+
+    @FXML
+    private void btnFacebookPressed(MouseEvent event) {
+        facebookPressed();
+    }
+
+    private void facebookPressed() {
         TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Introduce un nombre");
-        dialog.setHeaderText("Con que usuario quieres escribir en Facebook");
-        dialog.setContentText("Introduce tu nombre:");
+        dialog.setTitle(this.bundle.getString("dialog.Social.Title"));
+        dialog.setHeaderText(this.bundle.getString("dialog.Social.Fb.Header"));
+        dialog.setContentText(this.bundle.getString("dialog.Social.Context"));
         Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como " + name));
+        result.ifPresent(name -> this.labelBottom.setText(this.bundle.getString("label.sendMessage") +" "+ name));
+    }
+
+    //GOOGLE+
+    @FXML
+    private void btnGooglePressed(MouseEvent event) {
+        googlePressed();
     }
 
     @FXML
     private void itemGooglePressed(ActionEvent event) {
-        TextInputDialog dialog = new TextInputDialog("");
-        dialog.setTitle("Introduce un nombre");
-        dialog.setHeaderText("Con que usuario quieres escribir en Google+");
-        dialog.setContentText("Introduce tu nombre:");
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> this.labelBottom.setText("Mensaje enviado como " + name));
+        googlePressed();
     }
 
+    private void googlePressed() {
+        TextInputDialog dialog = new TextInputDialog("");
+        dialog.setTitle(this.bundle.getString("dialog.Social.Title"));
+        dialog.setHeaderText(this.bundle.getString("dialog.Social.Gg.Header"));
+        dialog.setContentText(this.bundle.getString("dialog.Social.Context"));
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(name -> this.labelBottom.setText(this.bundle.getString("label.sendMessage") +" "+ name));
+
+    }
+
+    //COMPRAS
+    public void showPurchaseRealized(String tienda) {
+        this.labelBottom.setText(this.bundle.getString("alert.Buy.Yes.Text") + tienda);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(this.bundle.getString("alert.Buy.Yes.Title"));
+        alert.setHeaderText(this.bundle.getString("alert.Buy.Yes.Header"));
+        alert.setContentText(this.bundle.getString("alert.Buy.Yes.Content") + tienda);
+        alert.showAndWait();
+    }
+
+    public void noPurchaseRealized(String tienda) {
+        this.labelBottom.setText(this.bundle.getString("alert.Buy.No.Text") + tienda);
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(this.bundle.getString("alert.Buy.No.Title"));
+        alert.setHeaderText(this.bundle.getString("alert.Buy.No.Header"));
+        alert.setContentText(this.bundle.getString("alert.Buy.No.Content"));
+        alert.showAndWait();
+    }
+
+    //CAMBIOS DE IDIOMAS
     @FXML
     private void onSpaPressed(ActionEvent event) throws Exception {
         Locale locale = new Locale("es", "ES");
