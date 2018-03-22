@@ -18,17 +18,22 @@ import javafx.stage.Stage;
  * @author thepuar
  */
 public class Practica4 extends Application {
+    public static Stage primaryStage;
     
     @Override
     public void start(Stage stage) throws Exception {
         Locale locale = Locale.getDefault();
-        ResourceBundle bundle = ResourceBundle.getBundle("idiomas.strings",locale);
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"),bundle);
-
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
+        this.primaryStage = stage;
+        carga(locale);
+//        Locale locale = Locale.getDefault();
+//        ResourceBundle bundle = ResourceBundle.getBundle("idiomas.strings",locale);
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"),bundle);
+//
+//        Scene scene = new Scene(root);
+//        stage.setTitle("Menus y dialogos");
+//        
+//        stage.setScene(scene);
+//        stage.show();
     }
 
     /**
@@ -36,6 +41,18 @@ public class Practica4 extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    public void carga(Locale locale)throws Exception{
+        // Locale locale = Locale.getDefault();
+        ResourceBundle bundle = ResourceBundle.getBundle("idiomas.strings",locale);
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"),bundle);
+
+        Scene scene = new Scene(root);
+        this.primaryStage.setTitle("Menus y dialogos");
+        
+        this.primaryStage.setScene(scene);
+        this.primaryStage.show();
     }
     
 }

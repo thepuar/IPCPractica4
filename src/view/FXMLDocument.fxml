@@ -26,18 +26,18 @@
                      </accelerator></MenuItem>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Lanzar">
+          <Menu mnemonicParsing="false" text="%menu.Run">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#btnAmazonPressed" text="Amazon" />
-                  <MenuItem mnemonicParsing="false" onAction="#btnBingPressed" text="Blogger" />
-                  <MenuItem mnemonicParsing="false" onAction="#btnEbayPressed" text="Ebay" />
-                  <MenuItem mnemonicParsing="false" onAction="#btnFacebookPressed" text="Facebook" />
-                  <MenuItem mnemonicParsing="false" onAction="#btnGooglePressed" text="Google+" />
+              <MenuItem fx:id="mIAmazon" mnemonicParsing="false" onAction="#itemAmazonPressed" text="Amazon" />
+                  <MenuItem fx:id="mIBlogger" mnemonicParsing="false" onAction="#itemBingPressed" text="Blogger" />
+                  <MenuItem fx:id="mIEbay" mnemonicParsing="false" onAction="#itemEbayPressed" text="Ebay" />
+                  <MenuItem fx:id="mIFacebook" mnemonicParsing="false" onAction="#itemFacebookPressed" text="Facebook" />
+                  <MenuItem fx:id="mIGoogle" mnemonicParsing="false" onAction="#itemGooglePressed" text="Google+" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Opciones">
+          <Menu mnemonicParsing="false" text="%menu.Options">
                <items>
-                  <Menu mnemonicParsing="false" text="Comprar en">
+                  <Menu mnemonicParsing="false" text="%menu.Options.Buy">
                     <items>
                         <RadioMenuItem fx:id="rbAmazon" mnemonicParsing="false" text="Amazon" />
                         <RadioMenuItem fx:id="rbEbay" mnemonicParsing="false" text="Ebay" />
@@ -45,6 +45,13 @@
                   </Menu>
                </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="%menu.Language">
+              <items>
+                  <RadioMenuItem fx:id="rbSpa" mnemonicParsing="false" onAction="#onSpaPressed" text="%menu.Language.Spa" />
+                  <RadioMenuItem fx:id="rbVal" mnemonicParsing="false" onAction="#onValPressed" text="%menu.Language.Val" />
+                  <RadioMenuItem fx:id="rbEng" mnemonicParsing="false" onAction="#onEngPressed" text="%menu.Language.Eng" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
